@@ -1,46 +1,125 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@acme/ui';
+import { Button } from '@acme/ui/src/button';
+import { Plus } from 'lucide-react';
 
 const meta: Meta<typeof Button> = {
+  title: 'Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: { type: 'radio' },
-      options: ['button', 'submit', 'reset'],
+    variant: {
+      description: 'Button color variant',
+      control: {
+        type: 'select',
+      },
+      options: [
+        'primary',
+        'secondary',
+        'danger',
+        'outline',
+        'ghost',
+        'warning',
+      ],
+    },
+    size: {
+      description: 'Button size',
+      control: {
+        type: 'select',
+      },
+      options: ['sm', 'base', 'lg'],
     },
   },
 };
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<typeof Button>;
-
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/react/api/csf
- * to learn how to use render functions.
- */
 export const Primary: Story = {
-  render: (props) => (
-    <Button
-      {...props}
-      onClick={(): void => {
-        // eslint-disable-next-line no-alert -- alert for demo
-        alert('Hello from Turborepo!');
-      }}
-    >
-      Hello
-    </Button>
-  ),
-  name: 'Button',
   args: {
-    children: 'Hello',
-    type: 'button',
-    style: {
-      color: 'blue',
-      border: '1px solid gray',
-      padding: 10,
-      borderRadius: 10,
-    },
+    variant: 'primary',
+    children: 'Primary Button',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary Button',
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    variant: 'outline',
+    children: 'Outline Button',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    children: 'Ghost Button',
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+    children: 'Danger Button',
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    variant: 'warning',
+    children: 'Warning Button',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Disabled Button',
+    disabled: true,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Loading Button',
+    isLoading: true,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Small Button',
+    size: 'sm',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Large Button',
+    size: 'lg',
+  },
+};
+
+export const WithLeftIcon: Story = {
+  render: (args) => <Button {...args} leftIcon={Plus} />,
+  args: {
+    variant: 'primary',
+    children: 'Button with Left Icon',
+  },
+};
+
+export const WithRightIcon: Story = {
+  render: (args) => <Button {...args} rightIcon={Plus} />,
+  args: {
+    variant: 'primary',
+    children: 'Button with Right Icon',
   },
 };
