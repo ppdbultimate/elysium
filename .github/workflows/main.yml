@@ -1,15 +1,14 @@
-name: Release
+name: Code Check
 
 on:
   push:
     branches:
       - main
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+  pull_request: {}
 
 jobs:
   release:
-    name: 🚀 Release
+    name: ⬣ ESLint, ʦ TypeScript, and 💅 Prettier
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -29,11 +28,5 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: pnpm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Code Check
+        run: pnpm run check-all

@@ -6,6 +6,8 @@
       "dependsOn": ["^build"]
     },
     "lint": {},
+    "type:check": {},
+    "format:check": {},
     "dev": {
       "cache": false,
       "persistent": true
