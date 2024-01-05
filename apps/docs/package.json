@@ -10,15 +10,15 @@
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0"
   },
   "dependencies": {
-    "@ppdbultimate/elysium": "*",
+    "@ppdbultimate/elysium": "workspace:*",
     "lucide-react": "^0.303.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@elysium/eslint-config": "*",
-    "@elysium/tailwind-config": "*",
-    "@elysium/typescript-config": "*",
+    "@elysium/eslint-config": "workspace:*",
+    "@elysium/tailwind-config": "workspace:*",
+    "@elysium/typescript-config": "workspace:*",
     "@storybook/addon-actions": "^7.5.3",
     "@storybook/addon-docs": "^7.5.3",
     "@storybook/addon-essentials": "^7.5.3",

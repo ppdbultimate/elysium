@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.ts",
   "devDependencies": {
-    "@elysium/typescript-config": "*",
+    "@elysium/typescript-config": "workspace:*",
     "tailwindcss": "^3.4.0"
   }
 }

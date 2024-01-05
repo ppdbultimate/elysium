@@ -21,9 +21,9 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "@elysium/eslint-config": "*",
-    "@elysium/prettier-config": "*",
-    "@elysium/typescript-config": "*",
+    "@elysium/eslint-config": "workspace:*",
+    "@elysium/prettier-config": "workspace:*",
+    "@elysium/typescript-config": "workspace:*",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.54.0",
