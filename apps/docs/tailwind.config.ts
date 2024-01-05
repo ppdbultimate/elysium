@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import sharedConfig from '@repo/tailwind-config';
+import sharedConfig from '@elysium/tailwind-config';
 
 const config: Config = {
   content: ['../../packages/ui/src/**/*.{js,jsx,ts,tsx}'],

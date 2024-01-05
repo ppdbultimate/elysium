@@ -1,10 +1,10 @@
 {
-  "name": "@repo/tailwind-config",
+  "name": "@elysium/tailwind-config",
   "version": "0.0.0",
   "private": true,
   "main": "index.ts",
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@elysium/typescript-config": "*",
     "tailwindcss": "^3.4.0"
   }
 }

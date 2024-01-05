@@ -1,5 +1,5 @@
 {
-  "name": "@acme/ui",
+  "name": "@ppdbultimate/elysium",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,9 +21,9 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/prettier-config": "*",
-    "@repo/typescript-config": "*",
+    "@elysium/eslint-config": "*",
+    "@elysium/prettier-config": "*",
+    "@elysium/typescript-config": "*",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.54.0",
@@ -36,5 +36,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "prettier": "@repo/prettier-config"
+  "prettier": "@elysium/prettier-config"
 }

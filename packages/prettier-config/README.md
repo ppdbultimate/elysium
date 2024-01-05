@@ -1,1 +1,1 @@
-# `@repo/prettier-config`
+# `@elysium/prettier-config`

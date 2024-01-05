@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@acme/ui/src/button';
+import { Button } from '@ppdbultimate/elysium/src/button';
 import { Plus } from 'lucide-react';
 
 const meta: Meta<typeof Button> = {
