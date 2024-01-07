@@ -1,9 +1,9 @@
 import type { LucideIcon } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 import * as React from 'react';
-import cn from '../lib/classnames';
+import cn from '@/lib/classnames';
 
-const ButtonVariant = [
+const IconButtonVariant = [
   'primary',
   'secondary',
   'danger',
@@ -11,31 +11,26 @@ const ButtonVariant = [
   'ghost',
   'warning',
 ] as const;
-const ButtonSize = ['sm', 'base', 'lg'] as const;
+const IconButtonSize = ['xs', 'sm', 'base', 'lg'] as const;
 
-export type ButtonProps = {
+export type IconButtonProps = {
   isLoading?: boolean;
-  variant?: (typeof ButtonVariant)[number];
-  size?: (typeof ButtonSize)[number];
-  leftIcon?: LucideIcon;
-  rightIcon?: LucideIcon;
-  leftIconClassName?: string;
-  rightIconClassName?: string;
+  variant?: (typeof IconButtonVariant)[number];
+  size?: (typeof IconButtonSize)[number];
+  icon?: LucideIcon;
+  iconClassName?: string;
 } & React.ComponentPropsWithRef<'button'>;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     {
-      children,
       className,
       disabled: buttonDisabled,
       isLoading,
       variant = 'primary',
       size = 'base',
-      leftIcon: LeftIcon,
-      rightIcon: RightIcon,
-      leftIconClassName,
-      rightIconClassName,
+      icon: Icon,
+      iconClassName,
       ...rest
     },
     ref,
@@ -52,24 +47,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           //#region  //*=========== Size ===========
           [
             size === 'lg' && [
-              'min-h-[2.75rem] px-3.5 md:min-h-[3rem]',
+              'min-h-[2.75rem] min-w-[2.75rem] md:min-h-[3rem] md:min-w-[3rem]',
               'text-base',
             ],
             size === 'base' && [
-              'min-h-[2.25rem] px-3 md:min-h-[2.5rem]',
+              'min-h-[2.25rem] min-w-[2.25rem] md:min-h-[2.5rem] md:min-w-[2.5rem]',
               'text-sm md:text-base',
             ],
             size === 'sm' && [
-              'min-h-[1.75rem] px-2 md:min-h-[2rem]',
+              'min-h-[1.75rem] min-w-[1.75rem] md:min-h-[2rem] md:min-w-[2rem]',
               'text-xs md:text-sm',
             ],
+            size === 'xs' && ['p-1', 'text-xs md:text-sm'],
           ],
-          //#endregion  //*======== Size ===========
+          //#region  //*=========== Variants ===========
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
               'bg-primary-500 text-white',
-              'border-primary-600 border',
+              'border border-primary-600',
               'hover:bg-primary-600 hover:text-white',
               'active:bg-primary-700',
               'disabled:bg-primary-700',
@@ -77,7 +73,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             ],
             variant === 'secondary' && [
               'bg-secondary-500 text-white',
-              'border-secondary-600 border',
+              'border border-secondary-600',
               'hover:bg-secondary-600 hover:text-white',
               'active:bg-secondary-700',
               'disabled:bg-secondary-700',
@@ -124,7 +120,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {isLoading ? (
           <div
             className={cn(
-              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+              'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
               {
                 'text-white': [
                   'primary',
@@ -139,39 +135,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <Loader2 className='animate-spin' size={18} />
           </div>
         ) : null}
-        {LeftIcon ? (
-          <div
-            className={cn([
-              size === 'lg' && 'mr-3',
-              size === 'base' && 'mr-2',
-              size === 'sm' && 'mr-1',
-            ])}
-          >
-            <LeftIcon
-              className={cn('text-base', leftIconClassName)}
-              size='1em'
-            />
-          </div>
-        ) : null}
-        {children}
-        {RightIcon ? (
-          <div
-            className={cn([
-              size === 'lg' && 'ml-3',
-              size === 'base' && 'ml-2',
-              size === 'sm' && 'ml-1',
-            ])}
-          >
-            <RightIcon
-              className={cn('text-base', rightIconClassName)}
-              size='1em'
-            />
-          </div>
-        ) : null}
+        {Icon ? <Icon className={cn(iconClassName)} size='1em' /> : null}
       </button>
     );
   },
 );
-Button.displayName = 'Button';
+IconButton.displayName = 'IconButton';
 
-export { Button };
+export { IconButton };
