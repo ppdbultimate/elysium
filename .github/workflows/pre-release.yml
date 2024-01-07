@@ -1,0 +1,76 @@
+name: Pre-Release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  pre-release:
+    if: contains(github.event.pull_request.labels.*.name, 'Automate Pre-Release')
+
+    name: 🚀 Pre-Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build --filter=docs^...
+
+      - name: Create Pre-Release Version
+        run: |
+          pnpm changeset version --snapshot "alpha-${{ github.event.pull_request.number }}"
+          pnpm publish --tag "alpha-${{ github.event.pull_request.number }}" --no-git-checks --no-git-tag --snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Get published package version
+        if: steps.changesets.outputs.published == 'true'
+        id: version
+        run: |
+          name=$(echo $changeset_outputs_published_packages | jq '.[0].name')
+          version=$(echo $changeset_outputs_published_packages | jq '.[0].version')
+          echo "::set-output name=version::$version"
+          echo "::set-output name=name::$name"
+        env:
+          changeset_outputs_published_packages: ${{ steps.changesets.outputs.publishedPackages }}
+
+      - name: Find Comment
+        if: steps.changesets.outputs.published == 'true'
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: New Pre-Release Version
+
+      - name: Create or update comment
+        if: steps.changesets.outputs.published == 'true'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            :tada: New Pre-Release Version :tada:
+
+            ${{ steps.version.outputs.name }}@${{ steps.version.outputs.version }}
+
+            :warning: Please use with caution. All the pre-release packages are only for testing purposes and are not intended to be used in production.
+          edit-mode: replace
