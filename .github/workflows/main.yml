@@ -7,7 +7,7 @@ on:
   pull_request: {}
 
 jobs:
-  release:
+  code-check:
     name: ⬣ ESLint, ʦ TypeScript, and 💅 Prettier
     runs-on: ubuntu-latest
     steps:
