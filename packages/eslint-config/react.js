@@ -41,6 +41,8 @@ module.exports = {
     'eslint-comments/require-description': 'off',
 
     'react/display-name': 'off',
+    'react/function-component-definition': 'off',
+    'react/no-leaked-render': 'off',
 
     'import/no-named-as-default': 'off',
     'import/no-default-export': 'off',
