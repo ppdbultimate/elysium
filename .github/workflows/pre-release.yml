@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -34,23 +35,22 @@ jobs:
         run: pnpm run build --filter=docs^...
 
       - name: Create Pre-Release Version
+        id: changesets
         run: |
-          pnpm changeset version --snapshot "alpha-${{ github.event.pull_request.number }}"
-          pnpm publish --tag "alpha-${{ github.event.pull_request.number }}" --no-git-checks --no-git-tag --snapshot
+          pnpm changeset version --snapshot alpha
+          pnpm run publish --tag alpha --no-git-checks
+          echo "::set-output name=published::true"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get published package version
         if: steps.changesets.outputs.published == 'true'
         id: version
         run: |
-          name=$(echo $changeset_outputs_published_packages | jq '.[0].name')
-          version=$(echo $changeset_outputs_published_packages | jq '.[0].version')
-          echo "::set-output name=version::$version"
-          echo "::set-output name=name::$name"
-        env:
-          changeset_outputs_published_packages: ${{ steps.changesets.outputs.publishedPackages }}
+          published_packages="$(node scripts/published-package.js)"
+          formatted_packages=$(echo $published_packages | jq -r '.[] | "\(.name)@\(.version)"')
+          echo "::set-output name=packages::$formatted_packages"
 
       - name: Find Comment
         if: steps.changesets.outputs.published == 'true'
@@ -70,7 +70,7 @@ jobs:
           body: |
             :tada: New Pre-Release Version :tada:
 
-            ${{ steps.version.outputs.name }}@${{ steps.version.outputs.version }}
+            ${{ steps.version.outputs.packages }}
 
             :warning: Please use with caution. All the pre-release packages are only for testing purposes and are not intended to be used in production.
           edit-mode: replace
