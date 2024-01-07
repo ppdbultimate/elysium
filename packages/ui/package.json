@@ -11,8 +11,8 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "build": "tsup --minify",
+    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "type:check": "tsc --noEmit --incremental false",
     "format:check": "prettier -c .",
@@ -27,6 +27,7 @@
     "@elysium/eslint-config": "workspace:*",
     "@elysium/prettier-config": "workspace:*",
     "@elysium/typescript-config": "workspace:*",
+    "@types/node": "^20.10.6",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.54.0",
