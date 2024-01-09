@@ -32,7 +32,7 @@ const config = {
       resolve: {
         alias: [
           {
-            find: 'ui',
+            find: 'elysium',
             replacement: resolve(__dirname, '../../../packages/ui/'),
           },
         ],
