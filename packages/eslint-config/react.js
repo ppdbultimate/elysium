@@ -38,11 +38,19 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-confusing-void-expression': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
+
     'eslint-comments/require-description': 'off',
+
+    'no-nested-ternary': 'off',
 
     'react/display-name': 'off',
     'react/function-component-definition': 'off',
     'react/no-leaked-render': 'off',
+    'react/no-unstable-nested-components': 'off',
 
     'import/no-named-as-default': 'off',
     'import/no-default-export': 'off',
