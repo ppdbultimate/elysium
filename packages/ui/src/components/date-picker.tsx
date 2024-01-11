@@ -51,6 +51,18 @@ const DatePicker = ({
   if (defaultYear) defaultDate.setFullYear(defaultYear);
   if (defaultMonth) defaultDate.setMonth(defaultMonth);
 
+  /**
+   * @see https://github.com/prismicio/prismic-next/pull/79/files
+   *
+   * TODO: Remove once https://github.com/vercel/next.js/issues/52216 is resolved.
+   */
+  let ResolvedReactDatePicker = ReactDatePicker;
+  if ('default' in ResolvedReactDatePicker) {
+    ResolvedReactDatePicker = (
+      ResolvedReactDatePicker as unknown as { default: typeof ReactDatePicker }
+    ).default;
+  }
+
   return (
     <div className={cn('relative', containerClassName)}>
       {withLabel ? (
@@ -66,7 +78,7 @@ const DatePicker = ({
         render={({ field: { onChange, onBlur, value } }) => (
           <>
             <div className={clsx('relative', withLabel && 'mt-1')}>
-              <ReactDatePicker
+              <ResolvedReactDatePicker
                 aria-describedby={id}
                 className={clsx(
                   'flex w-full rounded-lg shadow-sm',
