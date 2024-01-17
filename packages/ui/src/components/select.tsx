@@ -206,9 +206,7 @@ const Select = ({
                           selectedOptions as MultiValue<
                             (typeof options)[number]
                           >
-                        )
-                          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                          .map((option) => option?.value ?? ''),
+                        ).map((option) => option?.value ?? ''),
                       )
                     : field.onChange(selectedOptions?.value ?? '');
                 }}
