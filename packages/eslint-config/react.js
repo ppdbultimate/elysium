@@ -42,6 +42,14 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'off',
+    '@typescript-eslint/consistent-type-definitions': 'off',
+    '@typescript-eslint/prefer-reduce-type-parameter': 'off',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
 
     'eslint-comments/require-description': 'off',
 
@@ -51,6 +59,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/no-leaked-render': 'off',
     'react/no-unstable-nested-components': 'off',
+    'react/no-array-index-key': 'off',
 
     'import/no-named-as-default': 'off',
     'import/no-default-export': 'off',
