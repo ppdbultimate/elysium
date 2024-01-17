@@ -38,3 +38,25 @@ export {
   UnstyledLink,
   type UnstyledLinkProps,
 } from '@/components/unstyled-link';
+
+export {
+  PaginatedTable,
+  type PaginatedTableProps,
+} from '@/components/table/paginated-table';
+export {
+  PopupFilter,
+  type PopupFilterProps,
+} from '@/components/table/popup-filter';
+export {
+  ServerTable,
+  type ServerTableMeta,
+  type ServerTableProps,
+  type ServerTableState,
+} from '@/components/table/server-table';
+export { Table, type TableProps } from '@/components/table/table';
+
+export {
+  useServerTable,
+  type UseServerTableProps,
+} from '@/hooks/use-server-table';
+export type { CellContext, ColumnDef } from '@tanstack/react-table';
