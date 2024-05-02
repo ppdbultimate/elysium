@@ -207,10 +207,4 @@
   opacity: 0.5;
   border-radius: 10px;
 }
-
-/* Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #7b7b7b #f7f7f7;
-}
 /* #endregion  /**======== Scrollbar =========== */
