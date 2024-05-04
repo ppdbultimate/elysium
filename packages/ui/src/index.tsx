@@ -86,6 +86,14 @@ export { Radio, type RadioProps } from '@/components/radio';
 export { Select, type SelectProps } from '@/components/select';
 export { Skeleton, type SkeletonProps } from '@/components/skeleton';
 export {
+  SkeletonButton,
+  type SkeletonButtonProps,
+} from '@/components/skeleton-button';
+export {
+  SkeletonInput,
+  type SkeletonInputProps,
+} from '@/components/skeleton-input';
+export {
   StatisticsCard,
   type StatisticsCardProps,
 } from '@/components/statistics-card';
