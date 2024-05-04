@@ -1,14 +1,14 @@
 import * as React from 'react';
 import cn from '@/lib/classnames';
 
-const CARD_SIZE = ['sm', 'base'] as const;
-type CardSize = (typeof CARD_SIZE)[number];
+const SIMPLE_CARD_SIZE = ['sm', 'base'] as const;
+type SimpleCardSize = (typeof SIMPLE_CARD_SIZE)[number];
 
-export type CardProps = {
-  size?: CardSize;
+export type SimpleCardProps = {
+  size?: SimpleCardSize;
 } & React.ComponentPropsWithoutRef<'div'>;
 
-const Card = ({ className, size = 'base', ...rest }: CardProps) => {
+const SimpleCard = ({ className, size = 'base', ...rest }: SimpleCardProps) => {
   return (
     <div
       className={cn(
@@ -23,6 +23,6 @@ const Card = ({ className, size = 'base', ...rest }: CardProps) => {
     />
   );
 };
-Card.displayName = 'Card';
+SimpleCard.displayName = 'SimpleCard';
 
-export { Card };
+export { SimpleCard };

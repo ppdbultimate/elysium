@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from '@/lib/classnames';
-import { Card } from '@/components/card';
 import { Typography } from '@/components/typography';
+import { SimpleCard } from '@/components/simple-card';
 
 type DevelopmentCardProps = React.ComponentPropsWithoutRef<'div'>;
 
@@ -14,7 +14,7 @@ const DevelopmentCard = ({
   const shouldShow = envFlag || process.env.NODE_ENV !== 'production';
 
   return shouldShow ? (
-    <Card
+    <SimpleCard
       className={cn([
         'border-2 border-dashed border-secondary-500 bg-secondary-50',
         'pt-2',
@@ -27,7 +27,7 @@ const DevelopmentCard = ({
         Development Only
       </Typography>
       {children}
-    </Card>
+    </SimpleCard>
   ) : null;
 };
 DevelopmentCard.displayName = 'DevelopmentCard';
