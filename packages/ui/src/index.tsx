@@ -129,6 +129,10 @@ export {
   type SkeletonInputProps,
 } from '@/components/skeleton-input';
 export {
+  StatisticsSummaryCard,
+  type StatisticsSummaryCardProps,
+} from '@/components/statistics-summary-card';
+export {
   StatisticsCard,
   type StatisticsCardProps,
 } from '@/components/statistics-card';
