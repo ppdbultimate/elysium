@@ -25,6 +25,7 @@ export {
 } from '@/components/base-dialog';
 export { ButtonLink, type ButtonLinkProps } from '@/components/button-link';
 export { Button, type ButtonProps } from '@/components/button';
+export { Card, type CardProps } from '@/components/card';
 export { Checkbox, type CheckboxProps } from '@/components/checkbox';
 export { DatePicker, type DatePickerProps } from '@/components/date-picker';
 export {
@@ -45,6 +46,23 @@ export {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/drawer';
+export {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '@/components/dropdown-menu';
 export {
   DropzoneInput,
   type DropzoneInputProps,
@@ -88,6 +106,18 @@ export {
 export { PrimaryLink, type PrimaryLinkProps } from '@/components/primary-link';
 export { Radio, type RadioProps } from '@/components/radio';
 export { Select, type SelectProps } from '@/components/select';
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetPortal,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/sheet';
 export { SimpleCard, type SimpleCardProps } from '@/components/simple-card';
 export { Skeleton, type SkeletonProps } from '@/components/skeleton';
 export {
@@ -122,6 +152,21 @@ export {
   UnstyledLink,
   type UnstyledLinkProps,
 } from '@/components/unstyled-link';
+
+export {
+  DesktopNavigation,
+  type DesktopNavigationProps,
+} from '@/components/layout/dashboard/desktop-navigation';
+export { Header, type HeaderProps } from '@/components/layout/dashboard/header';
+export {
+  MobileNavigation,
+  type MobileNavigationProps,
+} from '@/components/layout/dashboard/mobile-navigation';
+export {
+  Navigation,
+  type NavigationProps,
+} from '@/components/layout/dashboard/navigation';
+export { PageInfo } from '@/components/layout/page-info';
 
 export {
   PaginatedTable,
