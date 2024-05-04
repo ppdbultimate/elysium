@@ -70,6 +70,11 @@ export {
   ModalTitle,
   ModalTrigger,
 } from '@/components/modal';
+export { NextImage, type NextImageProps } from '@/components/next-image';
+export {
+  NextImageLightbox,
+  type NextImageLightboxProps,
+} from '@/components/next-image-lightbox';
 export {
   PasswordInput,
   type PasswordInputProps,
