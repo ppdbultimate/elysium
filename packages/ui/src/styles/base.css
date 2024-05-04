@@ -90,6 +90,10 @@
     @apply mx-auto w-11/12;
   }
 
+  .dashboard-layout {
+    @apply mx-auto w-[92%] max-w-6xl md:w-[95%];
+  }
+
   .bg-dark a.custom-link {
     @apply border-gray-200 hover:border-gray-200/0;
   }
