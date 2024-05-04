@@ -25,7 +25,6 @@ export {
 } from '@/components/base-dialog';
 export { ButtonLink, type ButtonLinkProps } from '@/components/button-link';
 export { Button, type ButtonProps } from '@/components/button';
-export { Card, type CardProps } from '@/components/card';
 export { Checkbox, type CheckboxProps } from '@/components/checkbox';
 export { DatePicker, type DatePickerProps } from '@/components/date-picker';
 export {
@@ -84,6 +83,7 @@ export {
 export { PrimaryLink, type PrimaryLinkProps } from '@/components/primary-link';
 export { Radio, type RadioProps } from '@/components/radio';
 export { Select, type SelectProps } from '@/components/select';
+export { SimpleCard, type SimpleCardProps } from '@/components/simple-card';
 export { Skeleton, type SkeletonProps } from '@/components/skeleton';
 export {
   SkeletonButton,
