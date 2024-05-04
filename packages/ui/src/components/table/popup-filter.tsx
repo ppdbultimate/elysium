@@ -89,52 +89,55 @@ const PopupFilter = <T extends Record<string, string[]>>({
           {filter?.length > 0 && (allowMultiple ? `(${filter.length})` : '(1)')}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-md' side='bottom'>
+      <PopoverContent className='w-md p-6' side='bottom'>
         <FormProvider {...methods}>
           <div className='flex items-center justify-between'>
-            <Typography variant='h6'>Filter by</Typography>
+            <Typography variant='h5'>Filter</Typography>
             <div className='flex items-center gap-3'>
               <Typography
                 as='button'
                 className='cursor-pointer font-semibold text-primary-500 underline'
                 onClick={resetFilter}
-                variant='b3'
+                variant='c1'
               >
                 Reset Filter
               </Typography>
               <PopoverClose>
-                <IconButton icon={X} variant='ghost' />
+                <IconButton icon={X} size='xs' variant='ghost' />
               </PopoverClose>
             </div>
           </div>
-          {filterOption.map((item) => (
-            <div key={item.id}>
-              <Typography className='mt-4' color='secondary' variant='s3'>
-                {item.name}
-              </Typography>
-              <div className='mt-2'>
-                {item.options.map((option) =>
-                  allowMultiple ? (
-                    <Checkbox
-                      key={`${item.id}.${option.id}`}
-                      label={option.name}
-                      name='filter'
-                      size='sm'
-                      value={`${item.id}.${option.id}`}
-                    />
-                  ) : (
-                    <Radio
-                      key={`${item.id}.${option.id}`}
-                      label={option.name}
-                      name='filter'
-                      size='sm'
-                      value={`${item.id}.${option.id}`}
-                    />
-                  ),
-                )}
+          {filterOption.map((item) => {
+            if ((item.options || []).length === 0) return null;
+            return (
+              <div key={item.id}>
+                <Typography className='mt-4' color='secondary' variant='s3'>
+                  {item.name}
+                </Typography>
+                <div className='mt-2'>
+                  {item.options.map((option) =>
+                    allowMultiple ? (
+                      <Checkbox
+                        key={`${item.id}.${option.id}`}
+                        label={option.name}
+                        name='filter'
+                        size='sm'
+                        value={`${item.id}.${option.id}`}
+                      />
+                    ) : (
+                      <Radio
+                        key={`${item.id}.${option.id}`}
+                        label={option.name}
+                        name='filter'
+                        size='sm'
+                        value={`${item.id}.${option.id}`}
+                      />
+                    ),
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </FormProvider>
       </PopoverContent>
     </Popover>
