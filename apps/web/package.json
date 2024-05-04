@@ -24,6 +24,7 @@
     "auto-zustand-selectors-hook": "^2.0.0",
     "axios": "1.6.3",
     "clsx": "^2.0.0",
+    "date-fns": "^2.29.3",
     "immer": "^9.0.21",
     "lodash.get": "^4.4.2",
     "lucide-react": "^0.303.0",
