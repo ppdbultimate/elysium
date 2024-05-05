@@ -34,9 +34,9 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {
-    disableClickOutside?: boolean;
+    dismissible?: boolean;
   }
->(({ className, children, disableClickOutside, ...props }, ref) => (
+>(({ className, children, dismissible, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
     <DrawerPrimitive.Content
@@ -44,7 +44,7 @@ const DrawerContent = React.forwardRef<
         'fixed inset-x-0 bottom-0 z-30 flex h-auto flex-col rounded-t-xl bg-white',
         className,
       )}
-      onPointerDownOutside={(e) => disableClickOutside && e.preventDefault()}
+      onPointerDownOutside={(e) => !dismissible && e.preventDefault()}
       ref={ref}
       {...props}
     >

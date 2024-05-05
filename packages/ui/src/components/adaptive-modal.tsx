@@ -26,7 +26,8 @@ import { useMediaQuery } from '@/hooks/use-media-query';
 export type AdaptiveModalProps = {
   title: string;
   description?: string;
-  disableClickOutside?: boolean;
+  /** @default true */
+  dismissible?: boolean;
   /** @defaultValue 'Close' */
   closeText?: string;
   /** @defaultValue false */
@@ -40,7 +41,7 @@ export type AdaptiveModalProps = {
 const AdaptiveModal = ({
   title,
   description,
-  disableClickOutside = false,
+  dismissible = true,
   closeText = 'Close',
   isOpen = false,
   setIsOpen,
@@ -52,20 +53,17 @@ const AdaptiveModal = ({
    * @see https://github.com/radix-ui/primitives/issues/1386#issuecomment-1171798282
    * @see https://github.com/radix-ui/primitives/issues/1386#issuecomment-1573074278
    */
+  const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
-    setIsOpen(isOpen);
-  }, [isOpen, setIsOpen]);
-
-  const handleOpenChange = (open: boolean) => {
-    disableClickOutside ? setIsOpen(true) : setIsOpen(open);
-  };
+    setOpen(isOpen);
+  }, [isOpen]);
 
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   if (isDesktop)
     return (
-      <Modal onOpenChange={handleOpenChange} open={isOpen}>
-        <ModalContent disableClickOutside={disableClickOutside}>
+      <Modal onOpenChange={setIsOpen} open={open}>
+        <ModalContent dismissible={dismissible}>
           <ModalHeader>
             <ModalTitle>{title}</ModalTitle>
             {description ? (
@@ -76,11 +74,11 @@ const AdaptiveModal = ({
           {children ? <ModalSection>{children}</ModalSection> : null}
 
           <ModalFooter>
-            {!disableClickOutside && (
+            {dismissible ? (
               <ModalClose asChild>
                 <Button variant='outline'>{closeText}</Button>
               </ModalClose>
-            )}
+            ) : null}
             {actionButtonProps ? (
               <Button variant='primary' {...actionButtonProps} />
             ) : null}
@@ -90,8 +88,12 @@ const AdaptiveModal = ({
     );
 
   return (
-    <Drawer onOpenChange={handleOpenChange} open={isOpen}>
-      <DrawerContent disableClickOutside={disableClickOutside}>
+    <Drawer
+      dismissible={dismissible}
+      onOpenChange={dismissible ? setIsOpen : undefined}
+      open={open}
+    >
+      <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>{title}</DrawerTitle>
           {description ? (
@@ -105,11 +107,11 @@ const AdaptiveModal = ({
           {actionButtonProps ? (
             <Button variant='primary' {...actionButtonProps} />
           ) : null}
-          {!disableClickOutside && (
+          {dismissible ? (
             <DrawerClose asChild>
               <Button variant='outline'>{closeText}</Button>
             </DrawerClose>
-          )}
+          ) : null}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

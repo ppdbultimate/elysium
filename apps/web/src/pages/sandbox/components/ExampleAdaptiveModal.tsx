@@ -15,8 +15,10 @@ type ModalReturnType = {
 
 export default function ExampleAdaptiveModal({
   children,
+  dismissible = true,
 }: {
   children: (props: ModalReturnType) => JSX.Element;
+  dismissible?: boolean;
 }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const modalReturn: ModalReturnType = {
@@ -56,6 +58,7 @@ export default function ExampleAdaptiveModal({
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         description='Put your description here, lorem ipsum logs ignar dian'
+        dismissible={dismissible}
       >
         <FormProvider {...methods}>
           <form
