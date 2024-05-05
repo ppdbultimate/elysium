@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { AlertCircle, AlertTriangle, Check } from 'lucide-react';
+import { AlertCircle, AlertTriangle, Check, X } from 'lucide-react';
 import * as React from 'react';
 import {
   AlertDialog,
@@ -11,6 +11,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/alert-dialog';
+import { IconButton } from '@/components/icon-button';
 
 const colorVariant = {
   success: {
@@ -94,7 +95,17 @@ const BaseDialog = ({
 
   return (
     <AlertDialog onOpenChange={(isOpen) => !isOpen && onClose()} open={open}>
-      <AlertDialogContent>
+      <AlertDialogContent className='relative'>
+        <div className='absolute top-0 right-0 hidden pt-4 pr-4 sm:block'>
+          <IconButton
+            icon={X}
+            iconClassName='text-2xl text-typo-icons'
+            onClick={onClose}
+            size='sm'
+            variant='ghost'
+          />
+        </div>
+
         <AlertDialogHeader className='sm:flex sm:items-start sm:gap-x-4'>
           <div
             className={clsx(
@@ -118,7 +129,7 @@ const BaseDialog = ({
           <AlertDialogCancel
             isLoading={listenForLoadingToast ? isLoading : undefined}
           >
-            Cancel
+            Batal
           </AlertDialogCancel>
           <AlertDialogAction
             isLoading={listenForLoadingToast ? isLoading : undefined}
