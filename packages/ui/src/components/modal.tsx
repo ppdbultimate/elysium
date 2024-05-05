@@ -31,9 +31,9 @@ ModalOverlay.displayName = DialogPrimitive.Overlay.displayName;
 const ModalContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
-    disableClickOutside?: boolean;
+    dismissible?: boolean;
   }
->(({ className, children, disableClickOutside, ...props }, ref) => (
+>(({ className, children, dismissible = true, ...props }, ref) => (
   <ModalPortal>
     <ModalOverlay>
       <DialogPrimitive.Content
@@ -44,12 +44,12 @@ const ModalContent = React.forwardRef<
           'flex flex-col gap-4 sm:gap-6 p-4 sm:p-6',
           className,
         ])}
-        onPointerDownOutside={(e) => disableClickOutside && e.preventDefault()}
+        onPointerDownOutside={(e) => !dismissible && e.preventDefault()}
         ref={ref}
         {...props}
       >
         {children}
-        {!disableClickOutside && (
+        {dismissible ? (
           <DialogPrimitive.Close
             asChild
             className={cn('absolute right-4 top-4', className)}
@@ -61,7 +61,7 @@ const ModalContent = React.forwardRef<
               variant='ghost'
             />
           </DialogPrimitive.Close>
-        )}
+        ) : null}
       </DialogPrimitive.Content>
     </ModalOverlay>
   </ModalPortal>

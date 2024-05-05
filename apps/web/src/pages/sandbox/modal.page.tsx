@@ -14,7 +14,7 @@ export default function ModalPage() {
 
       <main>
         <section className=''>
-          <div className='layout min-h-screen space-x-2 py-20'>
+          <div className='layout min-h-screen space-x-2 space-y-2 py-20'>
             <ExampleModal>
               {({ openModal }) => (
                 <Button onClick={openModal}>Open Modal</Button>
@@ -23,6 +23,13 @@ export default function ModalPage() {
             <ExampleAdaptiveModal>
               {({ openModal }) => (
                 <Button onClick={openModal}>Open Adaptive Modal</Button>
+              )}
+            </ExampleAdaptiveModal>
+            <ExampleAdaptiveModal dismissible={false}>
+              {({ openModal }) => (
+                <Button onClick={openModal}>
+                  Open Undismissabel Adaptive Modal
+                </Button>
               )}
             </ExampleAdaptiveModal>
           </div>
