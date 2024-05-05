@@ -58,6 +58,7 @@ export type DialogOptions = {
   title: React.ReactNode;
   description: React.ReactNode;
   variant: 'success' | 'warning' | 'danger';
+  isLoading: boolean;
   submitText: React.ReactNode;
   listenForLoadingToast?: boolean;
 };
@@ -85,13 +86,11 @@ const BaseDialog = ({
     description,
     variant,
     submitText,
+    isLoading,
     listenForLoadingToast = false,
   },
 }: BaseDialogProps) => {
   const current = colorVariant[variant];
-
-  // const isLoading = useLoadingToast()
-  const isLoading = true;
 
   return (
     <AlertDialog onOpenChange={(isOpen) => !isOpen && onClose()} open={open}>
