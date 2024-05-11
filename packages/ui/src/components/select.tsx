@@ -13,6 +13,7 @@ export type SelectProps = {
   placeholder?: React.ReactNode;
   helperText?: string;
   type?: string;
+  isFixed?: boolean;
   isMulti?: boolean;
   readOnly?: boolean;
   hideError?: boolean;
@@ -28,6 +29,7 @@ const Select = ({
   label,
   helperText,
   id,
+  isFixed = false,
   isMulti = false,
   placeholder,
   validation,
@@ -145,6 +147,10 @@ const Select = ({
       borderRadius: '0.5rem',
       overflow: 'hidden',
     }),
+    menuPortal: (styles) => ({
+      ...styles,
+      zIndex: 1,
+    }),
   };
 
   //#endregion  //*======== Styles ===========
@@ -199,6 +205,7 @@ const Select = ({
                 isClearable
                 isDisabled={disabled || readOnly}
                 isMulti={isMulti}
+                menuPosition={isFixed ? 'fixed' : undefined}
                 onChange={(selectedOptions) => {
                   isMulti
                     ? field.onChange(
