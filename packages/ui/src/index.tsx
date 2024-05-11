@@ -200,6 +200,7 @@ export type * from '@/types/helper';
 
 export {
   Controller,
+  type FieldErrors,
   FormProvider,
   type SubmitHandler,
   useController,
