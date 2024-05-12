@@ -67,6 +67,10 @@ export {
   DropzoneInput,
   type DropzoneInputProps,
 } from '@/components/dropzone-input';
+export {
+  ErrorMessage,
+  type ErrorMessageProps,
+} from '@/components/error-message';
 export { FilePreview, type FilePreviewProps } from '@/components/file-preview';
 export { FormMessage, type FormMessageProps } from '@/components/form-message';
 export { Form, type FormProps } from '@/components/form';
