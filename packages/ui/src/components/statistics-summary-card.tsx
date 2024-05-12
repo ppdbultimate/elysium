@@ -14,10 +14,10 @@ export type StatisticsSummaryCardProps = {
     label: string;
     /** partial value to calculate getPercentage from  */
     value: number;
+    total: number;
     /** representation data in a color  */
     color: string;
   }[];
-  total: number;
   isLoading?: boolean;
   includePercentage?: boolean;
   includeTotal?: boolean;
@@ -28,7 +28,6 @@ const StatisticsSummaryCard = ({
   title,
   unit,
   data,
-  total,
   isLoading,
   includePercentage = false,
   includeTotal = false,
@@ -53,7 +52,7 @@ const StatisticsSummaryCard = ({
               includePercentage={includePercentage}
               includeTotal={includeTotal}
               key={item.id}
-              total={total}
+              total={item.total}
               unit={unit}
             />
           ))
