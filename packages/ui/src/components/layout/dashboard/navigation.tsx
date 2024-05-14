@@ -9,24 +9,26 @@ import { UnstyledLink } from '@/components/unstyled-link';
 import { Typography } from '@/components/typography';
 import { IconButton } from '@/components/icon-button';
 
-type TNavigation = {
+export type TNavigation = {
   name: string;
   href: string;
-  icon: LucideIcon;
+  icon?: LucideIcon;
   /**
    * Use this when the route is also used as a nested route
    * @example Use exactMatch for '/dashboard' to avoid both navigation links active when visiting '/dashboard/edit'
    */
   exactMatch?: boolean;
   children?: TNavigation[];
+  permission?: string[];
 };
-export type GroupedNavigation = {
+
+export type TGroupNavigation = {
   name: string;
   navigations: TNavigation[];
 };
 
 export type NavigationProps = {
-  groupNavs: GroupedNavigation[];
+  groupNavs: TGroupNavigation[];
 } & React.ComponentPropsWithoutRef<'nav'>;
 
 const Navigation = ({ className, groupNavs, ...rest }: NavigationProps) => {
@@ -130,15 +132,17 @@ function NestedNavigation({
               'group transition-all',
             )}
           >
-            <navChildren.icon
-              aria-hidden='true'
-              className={clsx(
-                'mr-1.5 flex-shrink-0',
-                'text-typo-secondary',
-                'group-data-[state=open]:mt-[1px] group-data-[state=open]:self-start',
-              )}
-              size={18}
-            />
+            {navChildren.icon ? (
+              <navChildren.icon
+                aria-hidden='true'
+                className={clsx(
+                  'mr-1.5 flex-shrink-0',
+                  'text-typo-secondary',
+                  'group-data-[state=open]:mt-[1px] group-data-[state=open]:self-start',
+                )}
+                size={18}
+              />
+            ) : null}
             <span
               className={clsx(
                 'text-left',
@@ -237,11 +241,13 @@ function NavigationLink({
       href={navigation.href}
       ref={linkRef}
     >
-      <navigation.icon
-        aria-hidden='true'
-        className={clsx(['mr-1.5 flex-shrink-0', 'text-typo-secondary'])}
-        size={18}
-      />
+      {navigation.icon ? (
+        <navigation.icon
+          aria-hidden='true'
+          className={clsx(['mr-1.5 flex-shrink-0', 'text-typo-secondary'])}
+          size={18}
+        />
+      ) : null}
       <span className={clsx([!isActive && 'truncate'])}>{navigation.name}</span>
     </UnstyledLink>
   );

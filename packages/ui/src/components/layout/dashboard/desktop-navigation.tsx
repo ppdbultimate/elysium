@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Navigation,
-  type GroupedNavigation,
+  type TGroupNavigation,
 } from '@/components/layout/dashboard/navigation';
 
 export type DesktopNavigationProps = {
   logo: React.ReactNode;
-  sidebarMenu: GroupedNavigation[];
+  sidebarMenu: TGroupNavigation[];
 };
 
 const DesktopNavigation = ({ logo, sidebarMenu }: DesktopNavigationProps) => {

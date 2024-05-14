@@ -173,6 +173,8 @@ export {
 export {
   Navigation,
   type NavigationProps,
+  type TGroupNavigation,
+  type TNavigation,
 } from '@/components/layout/dashboard/navigation';
 export { PageInfo } from '@/components/layout/page-info';
 
