@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Sheet, SheetContent, SheetHeader } from '@/components/sheet';
-import type { GroupedNavigation } from '@/components/layout/dashboard/navigation';
+import type { TGroupNavigation } from '@/components/layout/dashboard/navigation';
 import { Navigation } from '@/components/layout/dashboard/navigation';
 
 export type MobileNavigationProps = {
   logo: React.ReactNode;
-  sidebarMenu: GroupedNavigation[];
+  sidebarMenu: TGroupNavigation[];
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
