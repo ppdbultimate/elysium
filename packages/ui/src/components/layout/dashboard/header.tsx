@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Menu } from 'lucide-react';
@@ -15,54 +16,21 @@ import {
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu';
 
-type User = {
-  id: number;
-  email: string;
-  username: string;
-  name: string;
-  permissions: string[];
-  related_model_id?: number;
-  related_model_type?: 'App\\Domain\\Schools\\Models\\Smp';
-  token: string;
-  adminable?: {
-    accreditation_score: number;
-    city_id: number;
-    code: string;
-    id: number;
-    name: string;
-    npsn: string;
-    type: string;
-    created_at: string;
-    updated_at: string;
-  };
-  created_at: string;
-  updated_at: string;
-};
-
 export type HeaderProps = {
   bannerContents: (() => React.ReactNode)[];
+  description: string;
   handleLogout: () => void;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  user: User | null;
 };
 
 const userNavigation = [{ name: 'Ubah Password', href: '/akun/ubah-password' }];
 
 const Header = ({
   bannerContents,
+  description,
   handleLogout,
   setSidebarOpen,
-  user,
 }: HeaderProps) => {
-  const description = (() => {
-    switch (user?.related_model_type) {
-      case 'App\\Domain\\Schools\\Models\\Smp':
-        return `${user.adminable?.name} - ${user.adminable?.npsn}`;
-      default:
-        return 'Super Admin';
-    }
-  })();
-
   return (
     <div className='sticky top-0 z-20 bg-white shadow'>
       <div className='relative z-10 dashboard-layout'>
