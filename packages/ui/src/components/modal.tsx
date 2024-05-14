@@ -49,6 +49,7 @@ const ModalContent = React.forwardRef<
         {...props}
       >
         {children}
+        <div id='datepicker-portal' />
         {dismissible ? (
           <DialogPrimitive.Close
             asChild
