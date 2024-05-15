@@ -129,6 +129,10 @@ export {
   type SkeletonButtonProps,
 } from '@/components/skeleton-button';
 export {
+  SkeletonCard,
+  type SkeletonCardProps,
+} from '@/components/skeleton-card';
+export {
   SkeletonInput,
   type SkeletonInputProps,
 } from '@/components/skeleton-input';
