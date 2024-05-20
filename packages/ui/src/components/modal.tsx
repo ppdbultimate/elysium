@@ -44,6 +44,7 @@ const ModalContent = React.forwardRef<
           'flex flex-col gap-4 sm:gap-6 p-4 sm:p-6',
           className,
         ])}
+        onEscapeKeyDown={(e) => !dismissible && e.preventDefault()}
         onPointerDownOutside={(e) => !dismissible && e.preventDefault()}
         ref={ref}
         {...props}
