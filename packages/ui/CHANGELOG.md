@@ -1,5 +1,15 @@
 # @ppdbultimate/elysium
 
+## 0.0.4
+
+### Patch Changes
+
+- 391b847: Patch Changes
+
+  ### Bug Fixes
+
+  - Fix extra padding on modal
+
 ## 0.0.3
 
 ### Patch Changes
