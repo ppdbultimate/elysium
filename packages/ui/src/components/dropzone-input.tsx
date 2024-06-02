@@ -16,6 +16,8 @@ export type DropzoneInputProps = {
   readOnly?: boolean;
   hideError?: boolean;
   validation?: Record<string, unknown>;
+  containerClassName?: string;
+  defaultValue?: FileWithPreview | FileWithPreview[];
 } & Partial<DropzoneOptions>;
 
 const DEFAULT_MIN_SIZE = 100_000;
@@ -30,6 +32,8 @@ const DropzoneInput = ({
   validation,
   readOnly,
   hideError = false,
+  containerClassName,
+  defaultValue,
   ...dropzoneOptions
 }: DropzoneInputProps) => {
   const {
@@ -171,7 +175,7 @@ const DropzoneInput = ({
   });
 
   return (
-    <div>
+    <div className={containerClassName}>
       {withLabel ? (
         <Typography as='label' className='block' htmlFor={id} variant='s3'>
           {label}
@@ -201,6 +205,7 @@ const DropzoneInput = ({
       ) : (
         <Controller
           control={control}
+          defaultValue={defaultValue}
           name={id}
           render={({ field }) => (
             <>
