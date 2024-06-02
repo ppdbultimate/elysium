@@ -1,19 +1,20 @@
 import * as React from 'react';
 import { get, useFormState } from 'react-hook-form';
-import cn from '@/lib/classnames';
+import type { ExtractProps } from '@/types/helper';
+import { Typography } from '@/components/typography';
 
 export type ErrorMessageProps = {
   id: string;
-} & React.ComponentPropsWithoutRef<'p'>;
+} & Omit<ExtractProps<typeof Typography>, 'children'>;
 
 const ErrorMessage = ({ id, className, ...rest }: ErrorMessageProps) => {
   const { errors } = useFormState();
   const error = get(errors, id);
 
   return (
-    <p className={cn('text-sm text-red-500', className)} {...rest}>
+    <Typography className={className} color='danger' variant='c1' {...rest}>
       {error?.message?.toString()}
-    </p>
+    </Typography>
   );
 };
 ErrorMessage.displayName = 'ErrorMessage';
