@@ -211,4 +211,11 @@
   opacity: 0.5;
   border-radius: 10px;
 }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 /* #endregion  /**======== Scrollbar =========== */
