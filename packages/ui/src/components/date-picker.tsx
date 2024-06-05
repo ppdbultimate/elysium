@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Calendar } from 'lucide-react';
 import { Typography } from '@/components/typography';
 import cn from '@/lib/classnames';
+import get from 'lodash.get';
 
 export type DatePickerProps = {
   validation?: RegisterOptions;
@@ -43,7 +44,7 @@ const DatePicker = ({
     formState: { errors },
     control,
   } = useFormContext();
-  const error = errors[id] || null;
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   // If there is a year default, then change the year to the props

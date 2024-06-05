@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { RegisterOptions } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 import { Typography } from '@/components/typography';
+import get from 'lodash.get';
 
 export type PasswordInputProps = {
   /** Input label */
@@ -48,7 +49,7 @@ const PasswordInput = ({
     formState: { errors },
   } = useFormContext();
 
-  const error = errors[id] || null;
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   const [showPassword, setShowPassword] = useState(false);

@@ -3,6 +3,7 @@ import type { LucideIcon } from 'lucide-react';
 import * as React from 'react';
 import type { RegisterOptions } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
+import get from 'lodash.get';
 import { Typography } from '@/components/typography';
 
 export type InputProps = {
@@ -52,7 +53,7 @@ const Input = ({
     register,
     formState: { errors },
   } = useFormContext();
-  const error = errors[id] || null;
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   return (
