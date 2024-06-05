@@ -19,6 +19,7 @@ const NextImageLightbox = (props: NextImageLightboxProps) => {
           mainSrc={props.src}
           onCloseRequest={() => setIsOpen(false)}
           rotate={0}
+          wrapperClassName='pointer-events-auto'
         />
       ) : null}
     </div>
