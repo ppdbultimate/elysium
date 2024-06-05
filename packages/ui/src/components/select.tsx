@@ -3,6 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import type { MultiValue, StylesConfig } from 'react-select';
 import ReactSelect, { components } from 'react-select';
 import { ChevronDown, X } from 'lucide-react';
+import get from 'lodash.get';
 import type { ExtractProps } from '@/types/helper';
 import { Typography } from '@/components/typography';
 import cn from '@/lib/classnames';
@@ -42,8 +43,7 @@ const Select = ({
     control,
     formState: { errors },
   } = useFormContext();
-  const error = errors[id] || null;
-
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   //#region  //*=========== Styles ===========

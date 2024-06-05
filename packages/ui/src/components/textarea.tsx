@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { RegisterOptions } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
+import get from 'lodash.get';
 import { Typography } from '@/components/typography';
 
 export type TextareaProps = {
@@ -30,7 +31,7 @@ const Textarea = ({
     register,
     formState: { errors },
   } = useFormContext();
-  const error = errors[id] || null;
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   return (

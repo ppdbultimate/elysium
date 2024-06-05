@@ -6,6 +6,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import type { FileWithPreview } from '@/types/dropzone';
 import { Typography } from '@/components/typography';
 import { FilePreview } from '@/components/file-preview';
+import get from 'lodash.get';
 
 export type DropzoneInputProps = {
   accept?: Accept;
@@ -44,7 +45,7 @@ const DropzoneInput = ({
     clearErrors,
     formState: { errors },
   } = useFormContext();
-  const error = errors[id] || null;
+  const error = get(errors, id);
   const withLabel = label !== null;
 
   //#region  //*=========== Error Focus ===========
