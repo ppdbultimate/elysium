@@ -1,5 +1,23 @@
 # @ppdbultimate/elysium
 
+## 0.0.5
+
+### Patch Changes
+
+- 1352aec: Adjust components for siswa
+
+  ### Features
+
+  - Export several new types from react-hook-form
+  - Add `containerClassName` and `defaultValue` props on `DropzoneInput`
+  - Add `scrollbar-hide` class
+  - Use `Typography` on `ErrorMessage` component
+  - Increase modal and dialog z-index
+
+  ### Bug fixes
+
+  - Transparent background on table `Filter` component
+
 ## 0.0.4
 
 ### Patch Changes
