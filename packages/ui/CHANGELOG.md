@@ -1,5 +1,15 @@
 # @ppdbultimate/elysium
 
+## 0.0.6
+
+### Patch Changes
+
+- 8fc4362: Fix error object on input
+
+  ### Bug fixes
+
+  - Error object not accessed properly on input
+
 ## 0.0.5
 
 ### Patch Changes
