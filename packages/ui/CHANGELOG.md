@@ -1,5 +1,13 @@
 # @ppdbultimate/elysium
 
+## 0.0.7
+
+### Patch Changes
+
+- 41dbff6: ### Bug fixes
+
+  - Cannot click inside NextImageLightbox
+
 ## 0.0.6
 
 ### Patch Changes
