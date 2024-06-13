@@ -14,6 +14,7 @@ import { Filter } from '@/components/table/filter';
 export type TableProps<T extends object> = {
   data: T[];
   columns: ColumnDef<T>[];
+  emptyPlaceholder?: React.ReactNode;
   filterPlaceholder?: string;
   isLoading?: boolean;
   omitSort?: boolean;
@@ -24,6 +25,7 @@ const Table = <T extends object>({
   className,
   columns,
   data,
+  emptyPlaceholder,
   filterPlaceholder,
   isLoading = false,
   omitSort = false,
@@ -77,6 +79,7 @@ const Table = <T extends object>({
             <table className='min-w-full divide-y divide-gray-300'>
               <TableHead omitSort={omitSort} table={table} />
               <TableBody
+                emptyPlaceholder={emptyPlaceholder}
                 isLoading={isLoading}
                 omitSort={omitSort}
                 table={table}

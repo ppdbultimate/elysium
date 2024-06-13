@@ -55,6 +55,7 @@ interface SetServerTableState {
 export type ServerTableProps<T extends object> = {
   columns: ColumnDef<T>[];
   data: PaginatedApiResponse<T[]> | undefined;
+  emptyPlaceholder?: React.ReactNode;
   filterPlaceholder?: string;
   header?: React.ReactNode;
   isLoading: boolean;
@@ -72,6 +73,7 @@ const ServerTable = <T extends object>({
   isLoading,
   tableState,
   setTableState,
+  emptyPlaceholder,
   filterPlaceholder,
   omitSort = false,
   withFilter = false,
@@ -147,6 +149,7 @@ const ServerTable = <T extends object>({
             <table className='min-w-full divide-y divide-gray-300'>
               <TableHead omitSort={omitSort} table={table} />
               <TableBody
+                emptyPlaceholder={emptyPlaceholder}
                 isLoading={isLoading}
                 omitSort={omitSort}
                 table={table}
