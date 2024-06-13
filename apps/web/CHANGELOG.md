@@ -1,5 +1,12 @@
 # @elysium/web
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [38897cd]
+  - @ppdbultimate/elysium@0.0.8
+
 ## 0.0.6
 
 ### Patch Changes
