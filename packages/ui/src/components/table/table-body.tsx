@@ -5,6 +5,7 @@ import cn from '@/lib/classnames';
 import { Typography } from '@/components/typography';
 
 type TableBodyProps<T extends RowData> = {
+  emptyPlaceholder?: React.ReactNode;
   isLoading?: boolean;
   omitSort: boolean;
   table: Table<T>;
@@ -12,6 +13,7 @@ type TableBodyProps<T extends RowData> = {
 
 const TableBody = <T extends RowData>({
   className,
+  emptyPlaceholder,
   isLoading = false,
   omitSort,
   table,
@@ -40,7 +42,11 @@ const TableBody = <T extends RowData>({
             className='whitespace-nowrap px-6 py-4 text-center text-sm text-gray-700'
             colSpan={table.getAllColumns().length}
           >
-            <span>Data tidak ditemukan</span>
+            {typeof emptyPlaceholder === 'string' ? (
+              <span>{emptyPlaceholder}</span>
+            ) : (
+              emptyPlaceholder || <span>Data tidak ditemukan</span>
+            )}
           </td>
         </tr>
       ) : (
