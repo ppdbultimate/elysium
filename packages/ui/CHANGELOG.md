@@ -1,5 +1,15 @@
 # @ppdbultimate/elysium
 
+## 0.0.8
+
+### Patch Changes
+
+- 38897cd: Patch Changes
+
+  ### Features
+
+  - Add `emptyPlaceholder` prop on table components
+
 ## 0.0.7
 
 ### Patch Changes
